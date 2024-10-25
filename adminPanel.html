@@ -1,0 +1,779 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard</title>
+
+    <link rel="shortcut icon" href="img/logo.png" type="image/x-icon">
+
+    <!-- bootstrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+
+    <!-- BOX Icons -->
+    <link href='https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css' rel='stylesheet'>
+    <link href='https://cdn.jsdelivr.net/npm/boxicons@latest/css/boxicons.min.css' rel='stylesheet'>
+
+    <!-- owl carousel -->
+    <link rel="stylesheet" href="css/owl.carousel.min.css">
+    <link rel="stylesheet" href="css/owl.theme.default.min.css">
+
+    <!-- css -->
+    <link rel="stylesheet" href="css/adminPanel.css">
+
+</head>
+
+<body>
+    <nav class="navbar navbar-light bg-dark">
+        <div class="container-fluid">
+            <a class="navbar-brand text-white" href="#">
+                <img src="img/logo.png" alt="" width="30" height="34" class="d-inline-block align-text-top">
+                New Tech
+            </a>
+            <div class="col-2 d-none d-lg-block text-white h2">
+                Admin Panel
+            </div>
+            <div class="col-4">
+                <div class="input-group">
+                    <input type="text" class="form-control" placeholder="Search" aria-label="Recipient's username"
+                        aria-describedby="button-addon2">
+                    <button class="btn btn-outline-warning align-items-center" type="button" id="button-addon2"><i
+                            class='bx bx-search'></i></button>
+                </div>
+            </div>
+            <div class="col-1">
+                <div class="dropdown">
+                    <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1"
+                        data-bs-toggle="dropdown" aria-expanded="false">
+                        <i class='bx bx-user-circle'></i>
+                    </button>
+                    <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                        <li><a class="dropdown-item" href="#">Settings</a></li>
+                        <li><a class="dropdown-item" href="#">Activity Log</a></li>
+                        <li><a class="dropdown-item" href="adminSignin.html">Sign Out</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="col-1">
+                <button onclick="openNav()" class="btn btn-close-white"><i class='bx bx-menu'></i></button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- side nav -->
+    <div id="mySidenav" class="sidenav">
+        <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+        <div class="container">
+            <div class="row">
+                <div class="col-12 text-white">
+                    Welcome!
+                </div>
+                <div class="col-12 text-white">
+                    New Tech Admin Dashboard
+                </div>
+            </div>
+            <div class="row my-3 mt-5">
+                <button onclick="showDashboard();" class="btn btn-light mt-1 col-12 text-start"><i
+                        class="bx bxs-dashboard">&nbsp;&nbsp;</i>Dashboard</button>
+            </div>
+            <div class="row my-3">
+                <button onclick="addProduct();" class="btn btn-light mt-1 col-12 text-start"><i class="bx bx-cube">&nbsp;&nbsp;</i>Add
+                    Products</button>
+            </div>
+            <div class="row my-3">
+                <button onclick="mngProduct();" class="btn btn-light mt-1 col-12 text-start"><i class="bx bx-cube">&nbsp;&nbsp;</i>Manage
+                    Products</button>
+            </div>
+            <div class="row my-3">
+                <button onclick="mngUsers();" class="btn btn-light mt-1 col-12 text-start"><i class="bx bx-user">&nbsp;&nbsp;</i>Manage Users</button>
+            </div>
+        </div>
+    </div>
+
+    <div id="main">
+        <div class="container-fluid">
+            <div class="row">
+                <!-- Dashboard -->
+                <div class="col-12" id="dashboardBox">
+                    <!-- title -->
+                    <div class="row">
+                        <div class="h1 fw-bold col-12">
+                            Dashboard
+                        </div>
+                    </div>
+                    <!-- title -->
+                    <!-- cards -->
+                    <div class="row">
+                        <!-- card 1 -->
+                        <div class="col-12 col-md-6">
+                            <div class="card text-white bg-dark mb-3">
+                                <div class="card-header h3">Total Earnings <span class="h6 text-white-50">for the last
+                                        week</span></div>
+                                <div class="card-body">
+                                    <h5 class="card-title">Rs. 150000.00</h5>
+                                    <p class="card-text align-items-center"><a href="#"
+                                            class="text-decoration-none text-white-50">Show More <i
+                                                class="bx bx-right-arrow"></i> </a></p>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- card 1 -->
+
+                        <!-- card 2 -->
+                        <div class="col-12 col-md-6">
+                            <div class="card text-white bg-warning mb-3">
+                                <div class="card-header text-dark h3">Total Orders <span class="h6 text-black-50">for
+                                        the last week</span></div>
+                                <div class="card-body">
+                                    <h5 class="card-title text-dark">500</h5>
+                                    <p class="card-text align-items-center"><a href="#"
+                                            class="text-decoration-none text-black-50">Show More <i
+                                                class="bx bx-right-arrow"></i> </a></p>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- card 2 -->
+
+                        <!-- card 3 -->
+                        <div class="col-12 col-md-6">
+                            <div class="card text-white bg-dark mb-3">
+                                <div class="card-header text-white h3">Total Profits <span class="h6 text-white-50">for
+                                        the last week</span></div>
+                                <div class="card-body">
+                                    <h5 class="card-title text-light">40%</h5>
+                                    <p class="card-text align-items-center"><a href="#"
+                                            class="text-decoration-none text-white-50">Show More <i
+                                                class="bx bx-right-arrow"></i> </a></p>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- card 3 -->
+
+                        <!-- card 4 -->
+
+                        <div class="col-12 col-md-6">
+                            <div class="card text-white bg-warning mb-3">
+                                <div class="card-header text-dark h3">Total Vsits <span class="h6 text-black-50">for the
+                                        last week</span></div>
+                                <div class="card-body">
+                                    <h5 class="card-title text-dark">1200</h5>
+                                    <p class="card-text align-items-center"><a href="#"
+                                            class="text-decoration-none text-black-50">Show More <i
+                                                class="bx bx-right-arrow"></i> </a></p>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- card 4 -->
+                    </div>
+                    <!-- cards -->
+                    <!-- Product Activity -->
+                    <div class="row">
+                        <div class="col-12">
+                            <div class="row">
+                                <div class="col-12 h3 fw-bold">
+                                    Most Selling Products
+                                    <a href="#" class="h5 text-decoration-none"> See all..</a>
+                                </div>
+                                <!-- product -->
+                                <div class="card-bx col-12 col-md-4 col-xl-3 my-1">
+                                    <div class="card">
+                                        <img src="img/1.jpg" class="card-img-top" alt="...">
+                                        <div class="card-body text-center">
+                                            <p class="card-text">Powerlink Powerbank</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- product -->
+                                <!-- product -->
+                                <div class="card-bx col-12 col-md-4 col-xl-3 my-1">
+                                    <div class="card">
+                                        <img src="img/2.jpg" class="card-img-top" alt="...">
+                                        <div class="card-body text-center">
+                                            <p class="card-text">Samsung Evo M.2 SSD</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- product -->
+                                <!-- product -->
+                                <div class="card-bx col-12 col-md-4 col-xl-3 my-1">
+                                    <div class="card">
+                                        <img src="img/3.jpg" class="card-img-top" alt="...">
+                                        <div class="card-body text-center">
+                                            <p class="card-text">Asus Tuf Gaming Laptop</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- product -->
+                                <!-- product -->
+                                <div class="card-bx col-12 col-md-4 col-xl-3 my-1">
+                                    <div class="card">
+                                        <img src="img/4.jpg" class="card-img-top" alt="...">
+                                        <div class="card-body text-center">
+                                            <p class="card-text">AMD Ryzen 5 Processor</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- product -->
+                                <!-- product -->
+                                <div class="card-bx col-12 col-md-4 col-xl-3 my-1">
+                                    <div class="card">
+                                        <img src="img/5.jpg" class="card-img-top" alt="...">
+                                        <div class="card-body text-center">
+                                            <p class="card-text">Dual Monitor Stand</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- product -->
+                                <!-- product -->
+                                <div class="card-bx col-12 col-md-4 col-xl-3 my-1">
+                                    <div class="card">
+                                        <img src="img/6.jpg" class="card-img-top" alt="...">
+                                        <div class="card-body text-center">
+                                            <p class="card-text">Logitec Web Cam</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- product -->
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Product Activity -->
+                </div>
+                <!-- Dashboard -->
+                <!-- Products -->
+                <!-- add product form -->
+                <div class="col-12 d-none"  id="addProduct">
+                    <div class="row mt-3">
+                        <!-- input fields -->
+                        <div class="col-12 col-xl-6">
+                            <div class="row">
+                                <div class="col-12 h2 fw-bold mb-3">
+                                    Add Product
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-12 my-1">
+                                    
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-12 my-1">
+                                    <label class="form-label">Category</label>
+                                    <select class="form-select bg-light">
+                                        <option>Computer Hardware</option>
+                                        <option>Gaming Accessories</option>
+                                        <option>Office Tools</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-12 my-1">
+                                    <label class="form-label">Brand</label>
+                                    <input type="text" class="form-control" />
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-12 my-1">
+                                    <label class="form-label">Color</label>
+                                    <div class="row">
+                                        <div class="col-12 gap-4 d-flex">
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="radio" name="flexRadioDefault1"
+                                                    id="flexRadioDefault1" checked>
+                                                <label class="form-check-label" for="flexRadioDefault1">
+                                                    Jet Black
+                                                </label>
+                                            </div>
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="radio" name="flexRadioDefault1"
+                                                    id="flexRadioDefault2">
+                                                <label class="form-check-label" for="flexRadioDefault2">
+                                                    Purple
+                                                </label>
+                                            </div>
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="radio" name="flexRadioDefault1"
+                                                    id="flexRadioDefault3">
+                                                <label class="form-check-label" for="flexRadioDefault2">
+                                                    Red
+                                                </label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-12 my-1">
+                                    <label class="form-label">Selling Price</label>
+                                    <input type="text" class="form-control" />
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-12 my-1">
+                                    <label class="form-label">Description</label>
+                                    <textarea class="form-control" placeholder="Add Product Description here"
+                                        id="floatingTextarea"></textarea>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- input fields -->
+                        <div class="col-12 col-xl-6 mt-xl-5">
+                            <!-- add images -->
+                            <div class="row mt-xl-1">
+                                <div class="col-12">
+                                    <div class="row">
+                                        <div class="col-12">
+                                            <label class="form-label">Add Product Images</label>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-12 g-1">
+                                            <div class="card">
+                                                <div class="text-center card-body">
+                                                    <p class="card-text">Drop your image or Click Select to Browse </p>
+                                                    <a href="#" class="btn btn-warning">Select</a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-6 g-1">
+                                            <div class="card">
+                                                <div class="text-center card-body">
+                                                    <p class="card-text">Drop your image or Click Select to Browse </p>
+                                                    <a href="#" class="btn btn-warning">Select</a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-6 g-1">
+                                            <div class="card">
+                                                <div class="text-center card-body">
+                                                    <p class="card-text">Drop your image or Click Select to Browse </p>
+                                                    <a href="#" class="btn btn-warning">Select</a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-12 col-xl-4 mt-xl-5 my-1">
+                                            <button class="btn btn-dark col-12">Add Product</button>
+                                        </div>
+                                        <div class="col-12 col-xl-4 mt-xl-5 my-1">
+                                            <button class="btn btn-outline-dark col-12">Save Product</button>
+                                        </div>
+                                        <div class="col-12 col-xl-4 mt-xl-5 my-1">
+                                            <button class="btn btn-outline-dark col-12">Schedule</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- add images -->
+                        </div>
+                    </div>
+                </div>
+                <!-- add product form -->
+                <!-- Update product form -->
+                <div class="col-12 d-none" id="updateProduct">
+                    <div class="row mt-3">
+                        <!-- input fields -->
+                        <div class="col-12 col-xl-6">
+                            <div class="row">
+                                <div class="col-12 h2 fw-bold mb-3">
+                                    Update Product
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-12 my-1">
+                                    <label class="form-label">Product Name</label>
+                                    <input type="text" class="form-control" readonly placeholder="Product Name" />
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-12 my-1">
+                                    <label class="form-label">Category</label>
+                                    <select class="form-select bg-light">
+                                        <option>Computer Hardware</option>
+                                        <option>Gaming Accessories</option>
+                                        <option>Office Tools</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-12 my-1">
+                                    <label class="form-label">Brand</label>
+                                    <input type="text" class="form-control" placeholder="Brand" readonly />
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-12 my-1">
+                                    <label class="form-label">Color</label>
+                                    <div class="row">
+                                        <div class="col-12 gap-4 d-flex">
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="radio" name="flexRadioDefault"
+                                                    id="flexRadioDefault1" checked>
+                                                <label class="form-check-label" for="flexRadioDefault1">
+                                                    Jet Black
+                                                </label>
+                                            </div>
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="radio" name="flexRadioDefault"
+                                                    id="flexRadioDefault2">
+                                                <label class="form-check-label" for="flexRadioDefault2">
+                                                    Purple
+                                                </label>
+                                            </div>
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="radio" name="flexRadioDefault"
+                                                    id="flexRadioDefault3">
+                                                <label class="form-check-label" for="flexRadioDefault2">
+                                                    Red
+                                                </label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-12 my-1">
+                                    <label class="form-label">Selling Price</label>
+                                    <input type="text" class="form-control" />
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-12 my-1">
+                                    <label class="form-label">Description</label>
+                                    <textarea class="form-control" placeholder="Update Product Description here"
+                                        id="floatingTextarea"></textarea>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- input fields -->
+                        <div class="col-12 col-xl-6 mt-xl-5">
+                            <!-- add images -->
+                            <div class="row mt-xl-1">
+                                <div class="col-12">
+                                    <div class="row">
+                                        <div class="col-12">
+                                            <label class="form-label">Add Product Images</label>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-12 g-1">
+                                            <div class="card">
+                                                <div class="text-center card-body">
+                                                    <p class="card-text">Drop your image or Click Select to Browse </p>
+                                                    <a href="#" class="btn btn-warning">Select</a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-6 g-1">
+                                            <div class="card">
+                                                <div class="text-center card-body">
+                                                    <p class="card-text">Drop your image or Click Select to Browse </p>
+                                                    <a href="#" class="btn btn-warning">Select</a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-6 g-1">
+                                            <div class="card">
+                                                <div class="text-center card-body">
+                                                    <p class="card-text">Drop your image or Click Select to Browse </p>
+                                                    <a href="#" class="btn btn-warning">Select</a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-12 col-xl-6 mt-xl-5 my-1">
+                                            <button class="btn btn-dark col-12">Update Product</button>
+                                        </div>
+                                        <div class="col-12 col-xl-6 mt-xl-5 my-1">
+                                            <button class="btn btn-outline-danger col-12">Disable Product</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- add images -->
+                        </div>
+                    </div>
+                </div>
+                <!-- Update product form -->
+                <!-- Products -->
+                <!-- Manage Products -->
+                <div class="col-12 d-none" id="manageProduct">
+                    <div class="row">
+                        <div class="col-10 h2 fw-bold offset-xl-1 dark">
+                            Manage Products
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-12">
+                            <div class="row">
+                                <!-- product -->
+                                <div class="card-bx col-12 col-md-4 col-xl-3 my-1">
+                                    <div class="card">
+                                        <img src="img/1.jpg" class="card-img-top" alt="...">
+                                        <div class="card-body text-center">
+                                            <p class="card-text">Powerlink Powerbank</p>
+                                        </div>
+                                        <div class="row justify-content-around g-0">
+                                            <button class="col-12 btn btn-warning">View Product</button>
+                                            <button onclick="updateProduct();" class="col-6 btn btn-success">Update
+                                                Product</button>
+                                            <button class="col-6 btn btn-danger">Disable Product</button>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- product -->
+                                <!-- product -->
+                                <div class="card-bx col-12 col-md-4 col-xl-3 my-1">
+                                    <div class="card">
+                                        <img src="img/2.jpg" class="card-img-top" alt="...">
+                                        <div class="card-body text-center">
+                                            <p class="card-text">Samsung Evo M.2 SSD</p>
+                                        </div>
+                                        <div class="row justify-content-around g-0">
+                                            <button class="col-12 btn btn-warning">View Product</button>
+                                            <button onclick="updateProduct();" class="col-6 btn btn-success">Update Product</button>
+                                            <button class="col-6 btn btn-danger">Disable Product</button>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- product -->
+                                <!-- product -->
+                                <div class="card-bx col-12 col-md-4 col-xl-3 my-1">
+                                    <div class="card">
+                                        <img src="img/3.jpg" class="card-img-top" alt="...">
+                                        <div class="card-body text-center">
+                                            <p class="card-text">Asus Tuff Gaming Laptop</p>
+                                        </div>
+                                        <div class="row justify-content-around g-0">
+                                            <button class="col-12 btn btn-warning">View Product</button>
+                                            <button onclick="updateProduct();" class="col-6 btn btn-success">Update Product</button>
+                                            <button class="col-6 btn btn-danger">Disable Product</button>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- product -->
+                                <!-- product -->
+                                <div class="card-bx col-12 col-md-4 col-xl-3 my-1">
+                                    <div class="card">
+                                        <img src="img/4.jpg" class="card-img-top" alt="...">
+                                        <div class="card-body text-center">
+                                            <p class="card-text">AMD Ryzen 5 Processor</p>
+                                        </div>
+                                        <div class="row justify-content-around g-0">
+                                            <button class="col-12 btn btn-warning">View Product</button>
+                                            <button onclick="updateProduct();" class="col-6 btn btn-success">Update Product</button>
+                                            <button class="col-6 btn btn-danger">Disable Product</button>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- product -->
+                                <!-- product -->
+                                <div class="card-bx col-12 col-md-4 col-xl-3 my-1">
+                                    <div class="card">
+                                        <img src="img/5.jpg" class="card-img-top" alt="...">
+                                        <div class="card-body text-center">
+                                            <p class="card-text">Dual Monitor Stand Setup</p>
+                                        </div>
+                                        <div class="row justify-content-around g-0">
+                                            <button class="col-12 btn btn-warning">View Product</button>
+                                            <button onclick="updateProduct();" class="col-6 btn btn-success">Update Product</button>
+                                            <button class="col-6 btn btn-danger">Disable Product</button>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- product -->
+                                <!-- product -->
+                                <div class="card-bx col-12 col-md-4 col-xl-3 my-1">
+                                    <div class="card">
+                                        <img src="img/6.jpg" class="card-img-top" alt="...">
+                                        <div class="card-body text-center">
+                                            <p class="card-text">Logitec Webcam (1080p)</p>
+                                        </div>
+                                        <div class="row justify-content-around g-0">
+                                            <button class="col-12 btn btn-warning">View Product</button>
+                                            <button onclick="updateProduct();" class="col-6 btn btn-success">Update Product</button>
+                                            <button class="col-6 btn btn-danger">Disable Product</button>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- product -->
+                                <!-- product -->
+                                <div class="card-bx col-12 col-md-4 col-xl-3 my-1">
+                                    <div class="card">
+                                        <img src="img/7.jpg" class="card-img-top" alt="...">
+                                        <div class="card-body text-center">
+                                            <p class="card-text">Acer LCD Monitor (19 Inch)</p>
+                                        </div>
+                                        <div class="row justify-content-around g-0">
+                                            <button class="col-12 btn btn-warning">View Product</button>
+                                            <button onclick="updateProduct();" class="col-6 btn btn-success">Update Product</button>
+                                            <button class="col-6 btn btn-danger">Disable Product</button>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- product -->
+                                <!-- product -->
+                                <div class="card-bx col-12 col-md-4 col-xl-3 my-1">
+                                    <div class="card">
+                                        <img src="img/8.jpg" class="card-img-top" alt="...">
+                                        <div class="card-body text-center">
+                                            <p class="card-text">Logitec Gaming Wheel Setup</p>
+                                        </div>
+                                        <div class="row justify-content-around g-0">
+                                            <button class="col-12 btn btn-warning">View Product</button>
+                                            <button onclick="updateProduct();" class="col-6 btn btn-success">Update Product</button>
+                                            <button class="col-6 btn btn-danger">Disable Product</button>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- product -->
+                                <!-- product -->
+                                <div class="card-bx col-12 col-md-4 col-xl-3 my-1">
+                                    <div class="card">
+                                        <img src="img/10.jpg" class="card-img-top" alt="...">
+                                        <div class="card-body text-center">
+                                            <p class="card-text">RTX 2080 Graphics Card</p>
+                                        </div>
+                                        <div class="row justify-content-around g-0">
+                                            <button class="col-12 btn btn-warning">View Product</button>
+                                            <button onclick="updateProduct();" class="col-6 btn btn-success">Update Product</button>
+                                            <button class="col-6 btn btn-danger">Disable Product</button>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- product -->
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Manage Products -->
+                <!-- Manage users -->
+                <div class="col-12 d-none" id="manageUsers">
+                    <div class="row">
+                        <div class="col-10 offset-xl-1 h2 fw-bold text-dark">
+                            Users
+                        </div>
+                        <div class="col-12 col-xl-10 offset-xl-1">
+                            <table class="table">
+                                <thead>
+                                    <tr>
+                                        <th scope="col">User ID</th>
+                                        <th scope="col">First Name</th>
+                                        <th scope="col">Last Name</th>
+                                        <th scope="col">Address</th>
+                                        <th scope="col">User Type</th>
+                                        <th scope="col">User Status</th>
+                                        <th scope="col">View</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <th scope="row">1</th>
+                                        <td>Hashan</td>
+                                        <td>Lakruwan</td>
+                                        <td>#483, Jaela, Sri Lanka</td>
+                                        <td>Admin</td>
+                                        <td>
+                                            <div class="form-check form-switch">
+                                                <input class="form-check-input" type="checkbox"
+                                                    id="flexSwitchCheckDefault" disabled>
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <button class="btn btn-primary">View User Profile</button>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row">2</th>
+                                        <td>System</td>
+                                        <td>User 1</td>
+                                        <td>#483, Jaela, Sri Lanka</td>
+                                        <td>Editor</td>
+                                        <td>
+                                            <div class="form-check form-switch">
+                                                <input class="form-check-input" type="checkbox"
+                                                    id="flexSwitchCheckChecked" checked>
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <button class="btn btn-primary">View User Profile</button>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row">3</th>
+                                        <td>System</td>
+                                        <td>User 2</td>
+                                        <td>#483, Jaela, Sri Lanka</td>
+                                        <td>Editor</td>
+                                        <td>
+                                            <div class="form-check form-switch">
+                                                <input class="form-check-input" type="checkbox"
+                                                    id="flexSwitchCheckChecked" checked>
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <button class="btn btn-primary">View User Profile</button>
+                                        </td>
+                                    </tr>
+                                    <tr class="table-primary">
+                                        <th scope="row">4</th>
+                                        <td>Total Users</td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td>
+                                            03
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+                <!-- Manage users -->
+            </div>
+        </div>
+    </div>
+
+    <!-- =========================================== -->
+    <!-- JS -->
+    <!-- =========================================== -->
+
+    <!-- BOOTSTRAP -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+        crossorigin="anonymous"></script>
+
+    <!-- jquery -->
+    <script src="js/jquery.min.js"></script>
+
+    <!-- Owl Carousel -->
+    <script src="js/owl.carousel.min.js"></script>
+
+    <script src="js/script.js"></script>
+
+    <script>
+        $('.owl-carousel').owlCarousel({
+            loop: true,
+            margin: 10,
+            nav: true,
+            responsive: {
+                0: {
+                    items: 1
+                },
+                600: {
+                    items: 3
+                },
+                1000: {
+                    items: 5
+                }
+            }
+        })
+    </script>
+
+</body>
+
+</html>
