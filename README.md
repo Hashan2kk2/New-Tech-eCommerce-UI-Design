@@ -29,6 +29,10 @@ To view the project locally, follow these steps:
 2. Open the `index.html` file in your browser.
 
 ## Screenshots
+![image](https://github.com/user-attachments/assets/f3a3a5e3-88d2-47e0-9eec-f2e19e8bca59)
+![image](https://github.com/user-attachments/assets/a909a448-19e7-46d9-b995-8b02eb5d79a5)
+![image](https://github.com/user-attachments/assets/7fd35977-9978-4014-869f-c0721c1c8ee3)
+
 
 3. License
    This project is licensed under the MIT License.
